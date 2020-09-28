@@ -1,0 +1,94 @@
+
+{% extends 'list.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block head_list %}
+    <script src="{% static 'mantenimiento/tipoArchivoCarga.js' %}"></script>
+{% endblock %}
+
+
+{% block columns %}
+    <tr>
+        <th scope="col" style="width: 10%;">ID</th>
+        <th scope="col" style="width: 10%;">Aplicacion</th>
+        <th scope="col" style="width: 10%;">Tipo proceso</th>
+        <th scope="col" style="width: 10%;">Nombre tipo carga</th>
+        <th scope="col" style="width: 10%;">Tipo de archivo</th>
+        <th scope="col" style="width: 20%;">Limite</th>
+        <th scope="col" style="width: 20%;">abreviatura</th>
+        <th scope="col" style="width: 20%; text-align:center">Opciones</th>
+    </tr>
+{% endblock %}
+
+
+{% block buttons_list %}
+    <a class="btn btn-success btn-sm btnAdd" id="btn-nuevo">
+        <i class="fas fa-plus"></i> Nuevo registro
+    </a>
+{% endblock %}
+
+
+{% block javascript %}
+
+    <div class="modal fade" id="modal-medio" aria-modal="true" style="padding-right: 17px; display: none;" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <form method="post" action="." enctype="multipart/form-data">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title"></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="card card-default">
+                    <!-- /.card-header -->
+                     <div class="card-body">
+                           <input name="action" type="hidden" value="add">
+                          <input name="id" id="id" type="hidden" value="0">
+                        <div class="form-group">
+                           <label for="email">Aplicacion:</label>
+                            {{ cboAplicacion.aplicaciones }}
+                         </div>
+                         <div class="form-group">
+                           <label for="tipoProcesoId">Tipo proceso:</label>
+                            <select name="tipoProcesoId" id="id_tipoProcesoId" class="form-control input-sm">
+                                <option value="" selected>---------</option>
+                            </select>
+                         </div>
+
+                             {% for field in form.visible_fields %}
+                                            <div class="form-group">
+                                                <label for="email">{{ field.label }}:</label>
+                                                {{ field|add_class:'form-control'|attr:'autocomplete:off' }}
+                                            </div>
+                             {% endfor %}
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                   <input class="custom-control-input" type="checkbox" id="id_Validar" name="Validar">
+                                  <label for="id_Validar" class="custom-control-label">a validar</label>
+                                </div>
+                             </div>
+                     </div>
+                </div>
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary btn-sm" id="btn-guardar-medio">Guardar</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+        </form>
+    </div>
+
+    <script type="application/javascript">
+      $(function () {
+        TipoArchivo.init();
+      })
+    </script>
+
+{% endblock %}

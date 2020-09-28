@@ -1,0 +1,190 @@
+{% extends 'list.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block head_list %}
+    <script src="{% static 'wireless/wireless.js' %}"></script>
+{% endblock %}
+
+
+{% block columns %}
+    <tr>
+        <th scope="col" style="width: 10%;">Usuario</th>
+        <th scope="col" style="width: 10%;">Sitio</th>
+        <th scope="col" style="width: 10%;">Aplicacion</th>
+        <th scope="col" style="width: 10%;">Fecha carga</th>
+        <th scope="col" style="width: 20%; text-align: center">Opciones</th>
+    </tr>
+{% endblock %}
+
+
+
+{% block buttons_list %}
+    <a class="btn btn-success btn-sm btnAdd" id="btn-nuevo">
+        <i class="fas fa-plus"></i> Nuevo carga
+    </a>
+
+{% endblock %}
+
+
+{% block javascript %}
+     <div class="modal fade" id="modal" style="display: none;" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+
+         <form method="post" action="." enctype="multipart/form-data">
+
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h6 class="modal-title"></h6>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+              <div class="modal-body">
+                <div class="card card-default">
+                     <!-- /.card-header -->
+                      <div class="card-body">
+                            <input name="action" type="hidden" value="add">
+                            <input name="id" id="id" type="hidden" value="0">
+                            {% for field in form.visible_fields %}
+                                            <div class="form-group">
+                                                <label for="email">{{ field.label }}:</label>
+                                                {{ field|add_class:'form-control'|attr:'autocomplete:off' }}
+                                            </div>
+                             {% endfor %}
+
+                           <div class="form-group">
+                             <label for="id_tipoProcesos">Tipo proceso:</label>
+                                <select name="tipoProcesos" class="form-control input-sm" required id="id_tipoProcesos">
+
+                                </select>
+
+                           </div>
+                            <div id="divFiles">
+
+                            </div>
+                      </div>
+                  <!-- /.card-body -->
+                </div>
+                </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+
+        </form>
+     </div>
+
+    <div class="modal fade" id="modal-Descargar" aria-modal="true" style="padding-right: 17px; display: none;" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <form method="post" action="." enctype="multipart/form-data">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h6 class="modal-title"></h6>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="card card-default">
+                    <!-- /.card-header -->
+                     <div class="card-body">
+                           <input name="action" type="hidden" value="add">
+                           <input name="id" id="id" type="hidden" value="0">
+
+                          <div id="divArchivos">
+
+                          </div>
+                     </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary btn-sm pull-left" data-dismiss="modal">Cerrar</button>
+            <!--  <button type="submit" class="btn btn-primary btn-sm" id="btn-descargar">Descargar</button>-->
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+        </form>
+    </div>
+
+    <div class="modal fade" id="modal-check" aria-modal="true" style="padding-right: 17px; display: none;" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <form method="post" action="." enctype="multipart/form-data">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h6 class="modal-title"></h6>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="card card-default">
+                    <!-- /.card-header -->
+                     <div class="card-body">
+                           <input name="action" type="hidden" value="add">
+                           <input name="id" id="id" type="hidden" value="0">
+
+                         <div class="row">
+
+                             <div class="col-12">
+
+                                     <text class="text-primary">Parametros a validar</text>    OK <i class="fa fa-check-circle text-success"></i> Sin procesar  <i class="fa fa-stopwatch text-warning" title="sin procesar"></i>
+                                    <table class="table table-bordered" id="tableCheck">
+                                     <thead>
+                                       <tr>
+                                           <th scope="col" style="width: 10%;">MO</th>
+                                           <th scope="col" style="width: 10%;">Parametro</th>
+                                           <th scope="col" style="width: 10%;">Valor</th>
+                                           <th scope="col" style="width: 10%;">Estado</th>
+                                       </tr>
+                                     </thead>
+                                 </table>
+
+
+                             </div>
+                             <div class="col-12">
+                                 <blockquote class="quote-info">
+                                    <text class="text-primary">Archivos a validar</text> <i class="fa fa-check-circle text-success"></i>
+                                     <div id="divArchivos"> </div>
+                                 </blockquote>
+
+                             </div>
+
+                         </div>
+
+
+
+                     </div>
+                     <!-- <div class="card-footer">
+                            <button type="button" class="btn btn-success btn-sm" id="btnProcesar"> <i class="fa fa-check-double"></i>Ejecutar validacion</button>
+                      </div> -->
+                </div>
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+               <button type="button" class="btn btn-success btn-sm" id="btnProcesar"> <i class="fa fa-check-double"></i>   Ejecutar validacion</button>
+
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+        </form>
+    </div>
+
+
+   <script type="application/javascript">
+      $(function () {
+        CargaArchivo.init();
+      })
+    </script>
+
+{% endblock %}

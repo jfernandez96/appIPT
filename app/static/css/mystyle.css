@@ -1,0 +1,210 @@
+.table-bordered {
+    border: 0 !important;
+}
+
+.table-bordered > thead > tr > th {
+    border: 0 !important;
+    border-bottom: solid 1px #343a40 !important;
+}
+
+table.table-bordered.dataTable tbody td {
+    border-bottom-width: 1px !important;
+}
+
+.table-bordered > tbody > tr > td {
+    border: 0 !important;
+    border-bottom: 1px solid #cccccc !important;
+}
+
+.table-md th, .table-md td {
+    padding: 0.55rem;
+    font-size: 14px;
+}
+
+.card-footer {
+    border-top: 1px solid #dee2e6;
+}
+
+.btn {
+    color: white !important;
+}
+
+td.details-control {
+    background: url('../lib/datatables-1.10.20/images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('../lib/datatables-1.10.20/images/details_close.png') no-repeat center center;
+}
+
+.color_herder{
+    background-color: #61b1b9de;
+}
+
+
+/*SCROLL*/
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  border-radius: .3rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: .3rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d4cfcf;
+  border-radius: .3rem;
+}
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+  }
+a {
+    color: #3aa0ab;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.text-sm {
+    font-size: .875rem!important;
+}
+.card-primary:not(.card-outline)>.card-header {
+    background-color: #75bbc2;
+}
+.input-sm {
+    height: 28px;
+    padding-top: 4px;
+}
+
+.card {
+    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+    margin-bottom: 0.6rem;
+}
+
+.col-sm-2 {
+    flex: 0 0 11.666667% ;
+    max-width: 16.666667%;
+}
+.text-sm .dropdown-menu {
+    font-size: 0.8rem !important;
+}
+.form-group {
+    margin-bottom: 0rem;
+    margin-left: 7px;
+}
+.form-control {
+    font-size: 0.8rem !important;
+}
+.text-sm .btn {
+    font-size: .8rem !important;
+}
+.custom-file-label {
+    padding-top: 3px !important;
+}
+
+element.style {
+}
+.text-sm .btn {
+    font-size: .8rem !important;
+}
+.text-sm .btn {
+    font-size: .875rem!important;
+}
+.btn {
+    color: white !important;
+}
+.btn-group-sm>.btn, .btn-sm {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+}
+.btn-file {
+    color: #fff;
+    background-color: #75bbc2;
+    border-color: #edf0f38c;
+    box-shadow: none;
+}
+label {
+    display: inline-block;
+    margin-bottom: .2rem;
+    margin-top:.5rem;
+}
+input#file-upload-button{
+    background-color: #0b2e13;
+}
+.error{
+    border-color: #dc3545;
+    padding-right: 2.25rem;
+    background-repeat: no-repeat;
+    background-position: center right calc(.375em + .1875rem);
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
+label.error{
+    color: #dc3545;
+}
+
+.nav-icon-perso{
+    font-size: 0.6rem;
+    margin-left: 25px;
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    padding-top: 3px;
+}
+table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:before, table.dataTable thead .sorting_desc_disabled:after {
+    position: absolute;
+    bottom: 0.4em;
+    display: block;
+    opacity: 0.3;
+}
+
+.table td, .table th {
+    padding: 0.1rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+.btn-xs {
+    padding: .125rem 0.25rem;
+    font-size: .75rem;
+    line-height: 0.1;
+    border-radius: .15rem;
+}
+.text-sm-li{
+    font-size: .6rem !important;
+}
+
+.isDisabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.8;
+    pointer-events: none;
+    text-decoration: none;
+}
+
+.modal-header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1rem;
+    padding-bottom: .3rem;
+    padding-top: .3rem;
+    border-bottom: 1px solid #e9ecef;
+    border-top-left-radius: calc(.3rem - 1px);
+    border-top-right-radius: calc(.3rem - 1px);
+}
